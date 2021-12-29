@@ -1,0 +1,38 @@
+* {
+  margin: 0;
+  padding: 0;
+  color: white;
+  box-sizing: border-box;
+}
+
+body {
+  background: rgb(25, 25, 25);
+}
+
+.movie-list {
+  display: flex;
+  flex-direction: column;
+  color: rgb(36, 36, 36);
+  margin-top: 16px;
+
+  @media only screen and (min-width: 1248px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 32px;
+  }
+
+  .movie {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    word-break: break-all;
+    @media only screen and (max-width: 768px) {
+      flex-direction: column;
+    }
+  }
+}
+.user-movies {
+  @media only screen and (max-width: 700px) {
+    flex-direction: column;
+  }
+}

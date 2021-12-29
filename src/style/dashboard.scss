@@ -1,0 +1,57 @@
+.pic {
+  height: 100px;
+  width: 100px;
+  margin: 20px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: all linear 0.2s;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.09);
+  }
+}
+
+#preview-box {
+  overflow: hidden;
+  background-size: cover;
+  border-radius: 50%;
+  background-position: center;
+  border: 1px solid rgb(0, 0, 0);
+  min-width: 100px;
+}
+
+#preview-image {
+  filter: opacity(5%);
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+}
+
+#update {
+  justify-self: flex-end;
+}
+
+#img {
+  max-width: 200px;
+  max-height: 200px;
+  width: auto;
+  height: auto;
+}
+
+#delete-icon {
+  position: absolute;
+  right: 36px;
+  border: 1px solid red;
+  border-radius: 0.3rem;
+  background-color: red;
+  padding: 8px;
+}
+
+.user-tab {
+  @media only screen and(max-width: 768px) {
+    flex-direction: column;
+
+    .user-image-name {
+      margin-bottom: 16px;
+    }
+  }
+}
