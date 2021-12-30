@@ -1,11 +1,15 @@
-import React from "react";
-import { Card, Spinner } from "react-bootstrap";
+import React from 'react';
+import { Card, Spinner } from 'react-bootstrap';
 
 export const MoviesList = ({ movies, loading }) => {
   if (loading) {
     return (
       <>
-        <Spinner animation="border" variant="light" />
+        <Spinner
+          animation="border"
+          variant="light"
+          style={{ height: '50px', position: 'fixed', bottom: '50%' }}
+        />
       </>
     );
   }
@@ -15,26 +19,26 @@ export const MoviesList = ({ movies, loading }) => {
         <Card
           key={movies.id}
           className="movie p-4"
-          style={{ display: "flex", marginBottom: "16px" }}
+          style={{ display: 'flex', marginBottom: '16px' }}
         >
           <div
             style={{
-              background: "#15151575",
-              minWidth: "200px",
-              minHeight: "200px",
-              width: "auto",
-              height: "auto",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              marginRight: "16px",
+              background: '#15151575',
+              minWidth: '200px',
+              minHeight: '200px',
+              width: 'auto',
+              height: 'auto',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginRight: '16px',
             }}
           >
             <img
               style={{
-                height: "100%",
-                maxHeight: "200px",
-                maxWidth: "200px",
+                height: '100%',
+                maxHeight: '200px',
+                maxWidth: '200px',
               }}
               id="image"
               src={`http://localhost:4000/files/${movies.image}`}
