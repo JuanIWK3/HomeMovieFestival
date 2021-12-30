@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState } from 'react';
-import { Card, Dropdown } from 'react-bootstrap';
-import { api } from '../services/api';
-import '../style/movies.scss';
-import { MoviesList } from './MoviesList';
-import { Pagination } from './Pagination';
+import React, { useEffect, useState } from "react";
+import { Dropdown } from "react-bootstrap";
+import { api } from "../services/api";
+import "../style/movies.scss";
+import { MoviesList } from "./MoviesList";
+import { Pagination } from "./Pagination";
 
 interface Imovies {
   id: string;
@@ -23,7 +23,7 @@ export default function Movies() {
   useEffect(() => {
     const getMovies = async () => {
       setLoading(true);
-      const res = await api.get('movies');
+      const res = await api.get("movies");
       setMovies(res.data);
       setLoading(false);
     };

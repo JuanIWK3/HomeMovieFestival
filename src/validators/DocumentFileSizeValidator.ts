@@ -1,6 +1,6 @@
 class DocumentFileSizeValidator {
   private fileSizeInBytes: number;
-  private maxFileSizeInBytes: number = 20971520; // 20MB
+  private maxFileSizeInBytes = 20971520; // 20MB
 
   constructor(fileSize: number) {
     this.fileSizeInBytes = fileSize;
