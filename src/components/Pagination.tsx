@@ -1,6 +1,16 @@
-import React from 'react';
+import React from "react";
 
-export const Pagination = ({ moviesPerPage, totalMovies, paginate }) => {
+interface IPropsPag {
+  moviesPerPage: number;
+  totalMovies: number;
+  paginate: (a: number) => void;
+}
+
+export const Pagination = ({
+  moviesPerPage,
+  totalMovies,
+  paginate,
+}: IPropsPag) => {
   const pageNumbers = [];
 
   for (let i = 1; i <= totalMovies / moviesPerPage + 1; i++) {

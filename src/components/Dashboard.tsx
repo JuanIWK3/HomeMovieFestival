@@ -1,15 +1,15 @@
-import React, { SyntheticEvent, useEffect, useState } from 'react';
-import { Button, Modal, Alert, Spinner, Card } from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
-import { api } from '../services/api';
-import '../style/dashboard.scss';
+import React, { SyntheticEvent, useEffect, useState } from "react";
+import { Button, Modal, Alert, Spinner, Card } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
+import { api } from "../services/api";
+import "../style/dashboard.scss";
 import {
   validateFileSize,
   validateFileType,
-} from '../services/fileValidatorService';
-import FileService from '../services/fileService';
-import { MdDeleteOutline } from 'react-icons/md';
+} from "../services/fileValidatorService";
+import FileService from "../services/fileService";
+import { MdDeleteOutline } from "react-icons/md";
 
 interface ILista {
   id: string;
@@ -21,18 +21,18 @@ interface ILista {
 }
 
 export default function Dashboard() {
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const { currentUser, logout, avatar, setAvatar, updatePic, isLogged } =
     useAuth();
   const [show, setShow] = useState(false);
   const [file, setFile] = useState<File>(null);
-  const [previewURL, setPreviewURL] = useState('');
+  const [previewURL, setPreviewURL] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const [moviesList, setMoviesList] = useState<ILista[]>([]);
-  const userId = JSON.parse(localStorage.getItem('user')).id;
+  const userId = JSON.parse(localStorage.getItem("user")).id;
   const config = {
-    headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+    headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
   };
 
   useEffect(() => {
@@ -46,14 +46,14 @@ export default function Dashboard() {
   const handleClose = () => {
     setShow(false);
     setFile(null);
-    setPreviewURL('');
+    setPreviewURL("");
   };
-  const handleShow = () => (setShow(true), setError(''));
+  const handleShow = () => (setShow(true), setError(""));
 
   const handleMovieDelete = async (movieId: string) => {
     try {
       await api.delete(`/movies/${movieId}`, config);
-      console.log('movie deleted');
+      console.log("movie deleted");
       window.location.reload();
     } catch (error) {
       console.log(error);
@@ -63,7 +63,7 @@ export default function Dashboard() {
   const handleUpdatePic = async () => {
     const data = new FormData();
 
-    data.append('avatar', file);
+    data.append("avatar", file);
 
     try {
       setLoading(true);
@@ -78,15 +78,17 @@ export default function Dashboard() {
           console.log(res);
 
           localStorage.setItem(
-            'avatar',
+            "avatar",
             `http://localhost:4000/files/${res.data.avatar}`
           );
         });
-      } catch (error) {}
+      } catch (error) {
+        console.log(error);
+      }
     }, 1000);
 
     setTimeout(() => {
-      setAvatar(localStorage.getItem('avatar'));
+      setAvatar(localStorage.getItem("avatar"));
     }, 1000);
 
     console.log(avatar);
@@ -103,29 +105,29 @@ export default function Dashboard() {
   };
 
   useEffect(() => {
-    setAvatar(localStorage.getItem('avatar'));
-  }, [localStorage.getItem('avatar')]);
+    setAvatar(localStorage.getItem("avatar"));
+  }, [localStorage.getItem("avatar")]);
 
   const handleLogOut = async () => {
-    setError('');
+    setError("");
 
     try {
       await logout();
     } catch (error) {
-      setError('Failed to log out');
+      setError("Failed to log out");
     }
-    navigate('/');
+    navigate("/");
   };
 
-  const [uploadFormError, setUploadFormError] = useState<string>('');
+  const [uploadFormError, setUploadFormError] = useState<string>("");
 
   const handleFileUpload = async (element: HTMLInputElement) => {
     const file = element.files;
 
     if (!file || file.length === 0) {
-      setUploadFormError('');
+      setUploadFormError("");
       setFile(null);
-      setPreviewURL('');
+      setPreviewURL("");
       return;
     }
 
@@ -141,10 +143,10 @@ export default function Dashboard() {
       setUploadFormError(validFileType.errorMessage);
     }
     if (uploadFormError && validFileSize.isValid) {
-      setUploadFormError('');
+      setUploadFormError("");
     }
     if (uploadFormError && validFileType.isValid) {
-      setUploadFormError('');
+      setUploadFormError("");
     }
 
     setFile(file[0]);
@@ -154,39 +156,39 @@ export default function Dashboard() {
 
   return (
     <>
-      <div style={{ width: '100%' }}>
+      <div style={{ width: "100%" }}>
         <Card>
           <Card.Body>
             <div
               className="user-tab"
               style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                width: '100%',
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                width: "100%",
               }}
             >
               <div
                 className="user-image-name"
                 style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  flexDirection: 'column',
-                  marginLeft: '16px',
-                  marginRight: '16px',
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  flexDirection: "column",
+                  marginLeft: "16px",
+                  marginRight: "16px",
                 }}
               >
                 <div
                   id="preview-box"
                   style={{
                     backgroundImage: `url(${avatar})`,
-                    marginBottom: '8px',
+                    marginBottom: "8px",
                   }}
                 >
                   <img
                     id="preview-image"
-                    style={{ cursor: 'pointer' }}
+                    style={{ cursor: "pointer" }}
                     onClick={handleShow}
                     src={avatar}
                     alt=""
@@ -196,20 +198,20 @@ export default function Dashboard() {
               </div>
               <div
                 style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  flexDirection: 'column',
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  flexDirection: "column",
                 }}
               >
                 <Link to="/update-profile" id="update">
-                  <Button variant="secondary" style={{ margin: '4px' }}>
+                  <Button variant="secondary" style={{ margin: "4px" }}>
                     Update Profile
                   </Button>
                 </Link>
                 <Button
                   variant="secondary"
-                  style={{ margin: '4px' }}
+                  style={{ margin: "4px" }}
                   onClick={handleLogOut}
                 >
                   Log Out
@@ -219,18 +221,18 @@ export default function Dashboard() {
           </Card.Body>
         </Card>
 
-        <Card style={{ backgroundColor: '#181818' }}>
+        <Card style={{ backgroundColor: "#181818" }}>
           <Card.Body>
             <Card.Title>
               <div
                 style={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
                 }}
               >
                 <h4>Movies</h4>
-                <Link style={{ textDecoration: 'none' }} to="/newmovie">
+                <Link style={{ textDecoration: "none" }} to="/newmovie">
                   Add a new movie
                 </Link>
               </div>
@@ -241,27 +243,27 @@ export default function Dashboard() {
                   <Card
                     key={moviesList.id}
                     className="movie p-4"
-                    style={{ display: 'flex', marginBottom: '16px' }}
+                    style={{ display: "flex", marginBottom: "16px" }}
                   >
                     <div
                       style={{
-                        background: '#15151575',
-                        minWidth: '200px',
-                        minHeight: '200px',
-                        width: 'auto',
-                        height: 'auto',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        marginRight: '16px',
-                        marginBottom: '16px',
+                        background: "#15151575",
+                        minWidth: "200px",
+                        minHeight: "200px",
+                        width: "auto",
+                        height: "auto",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        marginRight: "16px",
+                        marginBottom: "16px",
                       }}
                     >
                       <img
                         style={{
-                          height: '100%',
-                          maxHeight: '200px',
-                          maxWidth: '200px',
+                          height: "100%",
+                          maxHeight: "200px",
+                          maxWidth: "200px",
                         }}
                         id="image"
                         src={`http://localhost:4000/files/${moviesList.image}`}
@@ -298,13 +300,13 @@ export default function Dashboard() {
             </Modal.Header>
             <Modal.Body
               style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
               }}
             >
-              <div className="input-group" style={{ width: '100%' }} />
+              <div className="input-group" style={{ width: "100%" }} />
               {!loading ? (
                 <>
                   <p>Preview</p>
@@ -322,8 +324,8 @@ export default function Dashboard() {
                     id="preview-box"
                     style={{
                       backgroundImage: `url(https://i0.wp.com/www.primefaces.org/wp-content/uploads/2017/09/feature-react.png?ssl=1)`,
-                      height: '200px',
-                      width: '200px',
+                      height: "200px",
+                      width: "200px",
                     }}
                     animation="border"
                   />

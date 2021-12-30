@@ -1,7 +1,19 @@
 import React from "react";
 import { Card, Spinner } from "react-bootstrap";
 
-export const MoviesList = ({ movies, loading }) => {
+interface IProps {
+  movies: {
+    id: string;
+    title: string;
+    description: string;
+    releaseDate: string;
+    image: string;
+    magnet: string;
+  }[];
+  loading: boolean;
+}
+
+export const MoviesList = ({ movies, loading }: IProps) => {
   if (loading) {
     return (
       <>
@@ -15,7 +27,7 @@ export const MoviesList = ({ movies, loading }) => {
   }
   return (
     <div className="movie-list">
-      {movies.map((movies: any) => (
+      {movies.map((movies) => (
         <Card
           key={movies.id}
           className="movie p-4"
