@@ -1,28 +1,29 @@
-import React, { FormEvent, useRef, useState } from "react";
-import { Form, Button, Card, Alert } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../contexts/AuthContext";
+import React, { FormEvent, useRef, useState } from 'react';
+import { Form, Button, Card, Alert } from 'react-bootstrap';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
 
 export default function Signup() {
   const nameRef = useRef<any>(null);
   const emailRef = useRef<any>(null);
   const passwordRef = useRef<any>(null);
   const passwordConfirmRef = useRef<any>(null);
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
   const [loading, setLoading] = useState<boolean>(false);
   const { signUp } = useAuth();
   const navigate = useNavigate();
+  const [count, setCount] = useState(5);
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
 
     if (passwordRef.current.value !== passwordConfirmRef.current.value) {
-      return setError("Passwords do not match");
+      return setError('Passwords do not match');
     }
 
     try {
-      setError("");
+      setError('');
       setLoading(true);
 
       await signUp(
@@ -34,17 +35,20 @@ export default function Signup() {
       setSuccess(`Account Created, Redirecting to Log In`);
 
       setTimeout(() => {
-        navigate("/login");
+        navigate('/login');
       }, 2000);
     } catch (err) {
-      setError("Failed to create an account");
+      setError('Failed to create an account');
     }
     setLoading(false);
   }
 
   return (
     <>
-      <div style={{ maxWidth: "400px", width: "40vw" }}>
+      <div
+        className="center"
+        style={{ maxWidth: '400px', width: '40vw', minWidth: '300px' }}
+      >
         <Card>
           <Card.Body>
             <h2 className="w-100 text-center mt-2">Sign Up</h2>

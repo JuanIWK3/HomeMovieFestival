@@ -1,31 +1,32 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { useAuth } from "../contexts/AuthContext";
-import { nav } from "../style/global";
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
+
+import '../style/navbar.scss';
 
 export default function Nav() {
   const { isLogged } = useAuth();
 
   return (
-    <nav style={nav.navbar}>
+    <nav className="navbar">
       <div>
-        <Link to="/" style={nav.navbarItems}>
+        <Link className="navbarItems" to="/">
           Home
         </Link>
       </div>
       <div>
         {isLogged ? (
           <>
-            <Link to="/user" style={nav.navbarItems}>
+            <Link className="navbarItems" to="/dashboard">
               User
             </Link>
           </>
         ) : (
           <>
-            <Link to="/login" style={nav.navbarItems}>
+            <Link className="navbarItems" to="/login">
               Log In
             </Link>
-            <Link to="/signup" style={nav.navbarItems}>
+            <Link className="navbarItems" to="/signup">
               Sign Up
             </Link>
           </>

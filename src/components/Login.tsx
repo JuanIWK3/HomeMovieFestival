@@ -3,6 +3,8 @@ import { Form, Button, Card, Alert } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
+import '../style/global.scss';
+
 export default function Login() {
   const emailRef = useRef<any>(null);
   const passwordRef = useRef<any>(null);
@@ -24,7 +26,14 @@ export default function Login() {
 
   return (
     <>
-      <div style={{ maxWidth: '400px', width: '40vw' }}>
+      <div
+        className="center"
+        style={{
+          maxWidth: '400px',
+          width: '40vw',
+          minWidth: '300px',
+        }}
+      >
         <Card>
           <Card.Body>
             <h2 className="w-100 text-center mt-2">Log In</h2>
