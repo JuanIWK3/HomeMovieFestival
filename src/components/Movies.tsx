@@ -43,39 +43,43 @@ export default function Movies() {
   return (
     <div className="d-flex flex-column align-items-center justify-content-center">
       <MoviesList movies={currentMovies} loading={loading} />
-      <Pagination
-        moviesPerPage={moviesPerPage}
-        totalMovies={movies.length}
-        paginate={paginate}
-      />
-      <Dropdown>
-        <Dropdown.Toggle variant="success" id="dropdown-basic">
-          Items per page
-        </Dropdown.Toggle>
-        <Dropdown.Menu>
-          <Dropdown.Item
-            onClick={() => {
-              setMoviesPerPage(5), window.scrollTo(0, 0);
-            }}
-          >
-            5
-          </Dropdown.Item>
-          <Dropdown.Item
-            onClick={() => {
-              setMoviesPerPage(10), window.scrollTo(0, 0);
-            }}
-          >
-            10
-          </Dropdown.Item>
-          <Dropdown.Item
-            onClick={() => {
-              setMoviesPerPage(15), window.scrollTo(0, 0);
-            }}
-          >
-            15
-          </Dropdown.Item>
-        </Dropdown.Menu>
-      </Dropdown>
+      {!loading && (
+        <>
+          <Pagination
+            moviesPerPage={moviesPerPage}
+            totalMovies={movies.length}
+            paginate={paginate}
+          />
+          <Dropdown>
+            <Dropdown.Toggle variant="success" id="dropdown-basic">
+              Items per page
+            </Dropdown.Toggle>
+            <Dropdown.Menu>
+              <Dropdown.Item
+                onClick={() => {
+                  setMoviesPerPage(5), window.scrollTo(0, 0);
+                }}
+              >
+                5
+              </Dropdown.Item>
+              <Dropdown.Item
+                onClick={() => {
+                  setMoviesPerPage(10), window.scrollTo(0, 0);
+                }}
+              >
+                10
+              </Dropdown.Item>
+              <Dropdown.Item
+                onClick={() => {
+                  setMoviesPerPage(15), window.scrollTo(0, 0);
+                }}
+              >
+                15
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+        </>
+      )}
     </div>
   );
 }
