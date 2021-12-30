@@ -1,10 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "bootswatch/dist/darkly/bootstrap.min.css";
+import App from "./components/App";
 
 ReactDOM.render(
   <React.StrictMode>
-    <h1>Sucesso</h1>
+    <App />
   </React.StrictMode>,
   document.getElementById("root")
 );
