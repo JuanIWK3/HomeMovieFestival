@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { Card } from 'react-bootstrap';
+import { useEffect, useRef, useState } from 'react';
+import { Card, Dropdown } from 'react-bootstrap';
 import { api } from '../services/api';
 import '../style/movies.scss';
 import { MoviesList } from './MoviesList';
@@ -18,7 +18,7 @@ export default function Movies() {
   const [movies, setMovies] = useState<Imovies[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [moviesPerPage] = useState(10);
+  const [moviesPerPage, setMoviesPerPage] = useState(5);
 
   useEffect(() => {
     const getMovies = async () => {
@@ -36,16 +36,46 @@ export default function Movies() {
   const currentMovies = movies.slice(indexOfFirstMovie, indexOfLastMovie);
 
   //* Change Page
-  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+  const paginate = (pageNumber: number) => {
+    setCurrentPage(pageNumber), window.scrollTo(0, 0);
+  };
 
   return (
-    <div className="d-flex flex-column">
+    <div className="d-flex flex-column align-items-center justify-content-center">
       <MoviesList movies={currentMovies} loading={loading} />
       <Pagination
         moviesPerPage={moviesPerPage}
         totalMovies={movies.length}
         paginate={paginate}
       />
+      <Dropdown>
+        <Dropdown.Toggle variant="success" id="dropdown-basic">
+          Items per page
+        </Dropdown.Toggle>
+        <Dropdown.Menu>
+          <Dropdown.Item
+            onClick={() => {
+              setMoviesPerPage(5), window.scrollTo(0, 0);
+            }}
+          >
+            5
+          </Dropdown.Item>
+          <Dropdown.Item
+            onClick={() => {
+              setMoviesPerPage(10), window.scrollTo(0, 0);
+            }}
+          >
+            10
+          </Dropdown.Item>
+          <Dropdown.Item
+            onClick={() => {
+              setMoviesPerPage(15), window.scrollTo(0, 0);
+            }}
+          >
+            15
+          </Dropdown.Item>
+        </Dropdown.Menu>
+      </Dropdown>
     </div>
   );
 }

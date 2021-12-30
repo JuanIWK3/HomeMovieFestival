@@ -16,7 +16,7 @@ export const Pagination = ({ moviesPerPage, totalMovies, paginate }) => {
               onClick={() => {
                 paginate(number);
               }}
-              href="!#"
+              href={`!#${number}`}
               className="page-link"
             >
               {number}

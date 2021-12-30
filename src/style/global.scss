@@ -11,11 +11,10 @@ body {
 }
 
 #root {
-  min-height: 100vh;
+  height: 100vh;
 }
 
-.center {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+.pagination {
+  max-width: 80vw;
+  overflow-x: scroll;
 }
