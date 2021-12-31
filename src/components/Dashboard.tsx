@@ -112,11 +112,11 @@ export default function Dashboard() {
     setError("");
 
     try {
+      navigate("/");
       await logout();
     } catch (error) {
       setError("Failed to log out");
     }
-    navigate("/");
   };
 
   const [uploadFormError, setUploadFormError] = useState<string>("");

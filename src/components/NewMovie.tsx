@@ -1,5 +1,5 @@
 import React, { FormEvent, SyntheticEvent, useState } from "react";
-import { Alert, Button, Card, FormControl } from "react-bootstrap";
+import { Alert, Button, Card, FormControl, InputGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import { api } from "../services/api";
@@ -115,6 +115,12 @@ export default function Newmovie() {
                     placeholder="Release Date"
                     onChange={(e) => setReleaseDate(e.target.value)}
                   />
+                  <InputGroup className="mb-3">
+                    <InputGroup.Text>Release Date</InputGroup.Text>
+                    <FormControl placeholder="day" aria-label="First name" />
+                    <FormControl placeholder="month" aria-label="Last name" />
+                    <FormControl placeholder="year" aria-label="Last name" />
+                  </InputGroup>
                   <FormControl
                     className="input"
                     type="text"

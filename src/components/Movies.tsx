@@ -17,7 +17,9 @@ interface Imovies {
 export default function Movies() {
   const [movies, setMovies] = useState<Imovies[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(
+    parseInt(window.location.pathname.replace("/", ""))
+  );
   const [moviesPerPage, setMoviesPerPage] = useState(5);
 
   useEffect(() => {
@@ -28,6 +30,9 @@ export default function Movies() {
       setLoading(false);
     };
     getMovies();
+    if (isNaN(currentPage)) {
+      setCurrentPage(1);
+    }
   }, []);
 
   //* Get Current Movies

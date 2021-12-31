@@ -20,7 +20,10 @@ export const MoviesList = ({ movies, loading }: IProps) => {
         <Spinner
           animation="border"
           variant="light"
-          style={{ height: "50px", position: "fixed", bottom: "50%" }}
+          style={{
+            position: "fixed",
+            bottom: "50%",
+          }}
         />
       </>
     );

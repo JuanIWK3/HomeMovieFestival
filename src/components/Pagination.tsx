@@ -26,7 +26,7 @@ export const Pagination = ({
               onClick={() => {
                 paginate(number);
               }}
-              href={`!#${number}`}
+              href={`${number}`}
               className="page-link"
             >
               {number}
