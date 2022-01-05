@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Spinner } from "react-bootstrap";
+import { Button, Card, Spinner } from "react-bootstrap";
 
 interface IProps {
   movies: {
@@ -65,8 +65,17 @@ export const MoviesList = ({ movies, loading }: IProps) => {
               <strong>{movies.title}</strong>
             </p>
             <p>{movies.description}</p>
-            <p>{movies.magnet}</p>
             <p>releaseDate: {movies.releaseDate.substring(0, 10)}</p>
+            <Button>
+              <p
+                onClick={() => {
+                  navigator.clipboard.writeText(movies.magnet);
+                }}
+                className="mb-0"
+              >
+                Copy Magnet Link
+              </p>
+            </Button>
           </div>
         </Card>
       ))}

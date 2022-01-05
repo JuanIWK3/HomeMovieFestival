@@ -1,14 +1,14 @@
-import React, { FormEvent, useRef, useState } from 'react';
-import { Form, Button, Card, Alert } from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
+import React, { FormEvent, useRef, useState } from "react";
+import { Form, Button, Card, Alert } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 
-import '../style/global.scss';
+import "../style/global.scss";
 
 export default function Login() {
   const emailRef = useRef<any>(null);
   const passwordRef = useRef<any>(null);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const { login } = useAuth();
   const navigate = useNavigate();
 
@@ -16,11 +16,11 @@ export default function Login() {
     e.preventDefault();
 
     try {
-      setError('');
+      setError("");
       await login(emailRef.current.value, passwordRef.current.value);
-      navigate('/');
+      navigate("/");
     } catch (e) {
-      setError('Failed to sign in');
+      setError(e.response.data);
     }
   }
 
@@ -29,9 +29,9 @@ export default function Login() {
       <div
         className="center"
         style={{
-          maxWidth: '400px',
-          width: '40vw',
-          minWidth: '300px',
+          maxWidth: "400px",
+          width: "40vw",
+          minWidth: "300px",
         }}
       >
         <Card>
@@ -45,12 +45,7 @@ export default function Login() {
             <Form onSubmit={handleSubmit}>
               <Form.Group id="email">
                 <Form.Label>Email</Form.Label>
-                <Form.Control
-                  autoComplete="on"
-                  type="email"
-                  ref={emailRef}
-                  required
-                />
+                <Form.Control type="email" ref={emailRef} required />
               </Form.Group>
               <Form.Group id="password">
                 <Form.Label>Password</Form.Label>

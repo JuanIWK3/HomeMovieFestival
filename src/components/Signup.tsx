@@ -1,15 +1,15 @@
-import React, { FormEvent, useRef, useState } from 'react';
-import { Form, Button, Card, Alert } from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
+import React, { FormEvent, useRef, useState } from "react";
+import { Form, Button, Card, Alert } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 
 export default function Signup() {
   const nameRef = useRef<any>(null);
   const emailRef = useRef<any>(null);
   const passwordRef = useRef<any>(null);
   const passwordConfirmRef = useRef<any>(null);
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState<boolean>(false);
   const { signUp } = useAuth();
   const navigate = useNavigate();
@@ -19,11 +19,11 @@ export default function Signup() {
     e.preventDefault();
 
     if (passwordRef.current.value !== passwordConfirmRef.current.value) {
-      return setError('Passwords do not match');
+      return setError("Passwords do not match");
     }
 
     try {
-      setError('');
+      setError("");
       setLoading(true);
 
       await signUp(
@@ -35,10 +35,10 @@ export default function Signup() {
       setSuccess(`Account Created, Redirecting to Log In`);
 
       setTimeout(() => {
-        navigate('/login');
+        navigate("/login");
       }, 2000);
     } catch (err) {
-      setError('Failed to create an account');
+      setError(err.response.data);
     }
     setLoading(false);
   }
@@ -47,7 +47,7 @@ export default function Signup() {
     <>
       <div
         className="center"
-        style={{ maxWidth: '400px', width: '40vw', minWidth: '300px' }}
+        style={{ maxWidth: "400px", width: "40vw", minWidth: "300px" }}
       >
         <Card>
           <Card.Body>
@@ -69,12 +69,7 @@ export default function Signup() {
               </Form.Group>
               <Form.Group id="email">
                 <Form.Label>Email</Form.Label>
-                <Form.Control
-                  autoComplete="on"
-                  type="email"
-                  ref={emailRef}
-                  required
-                />
+                <Form.Control type="email" ref={emailRef} required />
               </Form.Group>
               <Form.Group id="password">
                 <Form.Label>Password</Form.Label>

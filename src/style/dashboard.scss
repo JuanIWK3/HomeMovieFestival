@@ -17,12 +17,16 @@
   background-position: center;
   border: 1px solid rgb(0, 0, 0);
   min-width: 100px;
+  height: 150px;
+  width: 150px;
+  margin-bottom: 8px;
+  cursor: pointer;
 }
 
 #preview-image {
   filter: opacity(5%);
-  height: 100px;
-  width: 100px;
+  height: 150px;
+  width: 150px;
   border-radius: 50%;
 }
 
@@ -38,8 +42,6 @@
 }
 
 #delete-icon {
-  right: 36px;
-  border: 1px solid red;
   border-radius: 0.3rem;
   background-color: red;
   padding: 8px;
@@ -54,5 +56,21 @@
     .user-image-name {
       margin-bottom: 16px;
     }
+  }
+}
+
+.user-movie {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 80vw;
+  @media only screen and (min-width: 1248px) {
+    max-width: 600px;
+  }
+
+  align-items: center;
+  word-break: break-all;
+  @media only screen and (max-width: 768px) {
+    flex-direction: column;
   }
 }
