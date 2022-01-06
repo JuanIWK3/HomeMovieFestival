@@ -41,14 +41,6 @@
   height: auto;
 }
 
-#delete-icon {
-  border-radius: 0.3rem;
-  background-color: red;
-  padding: 8px;
-  cursor: pointer;
-  margin-left: 8px;
-}
-
 .user-tab {
   @media only screen and(max-width: 768px) {
     flex-direction: column;
@@ -84,5 +76,8 @@
   word-break: break-all;
   @media only screen and (max-width: 768px) {
     flex-direction: column;
+    #div-movies {
+      flex-direction: column;
+    }
   }
 }

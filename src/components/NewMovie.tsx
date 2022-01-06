@@ -98,6 +98,10 @@ export default function Newmovie() {
     }
   }
 
+  const curr = new Date();
+  curr.setDate(curr.getDate());
+  const date = curr.toISOString().substring(0, 10);
+
   return (
     <div
       className="center"
@@ -137,6 +141,7 @@ export default function Newmovie() {
                   type="text"
                   name="description"
                   value={description}
+                  minLength={160}
                   required
                   placeholder="Description"
                   onChange={(e) => setDescription(e.target.value)}
@@ -147,6 +152,7 @@ export default function Newmovie() {
                   name="release"
                   value={releaseDate}
                   required
+                  defaultValue={date}
                   placeholder="Release Date"
                   onChange={(e) => setReleaseDate(e.target.value)}
                 />

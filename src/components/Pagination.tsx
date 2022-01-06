@@ -23,6 +23,7 @@ export const Pagination = ({
         {pageNumbers.map((number) => (
           <li key={number} className="page-item">
             <a
+              style={{ fontSize: "12px" }}
               onClick={() => {
                 paginate(number);
               }}

@@ -5,12 +5,12 @@ import { useAuth } from "../contexts/AuthContext";
 import { api } from "../services/api";
 import "../style/dashboard.scss";
 
-import { MdDeleteOutline } from "react-icons/md";
 import {
   validateFileSize,
   validateFileType,
 } from "../services/fileValidatorService";
 import FileService from "../services/fileService";
+import { MoviesList } from "./MoviesList";
 
 interface ILista {
   id: string;
@@ -126,8 +126,6 @@ export default function Dashboard() {
     setTimeout(() => {
       try {
         api.get(`/users/${currentUser.id}`, config).then((res) => {
-          console.log(res);
-
           localStorage.setItem(
             "avatar",
             `https://homemoviefestival.herokuapp.com/files/${res.data.avatar}`
@@ -141,8 +139,6 @@ export default function Dashboard() {
     setTimeout(() => {
       setAvatar(localStorage.getItem("avatar"));
     }, 1000);
-
-    console.log(avatar);
 
     handleClose();
     handleShow();
@@ -232,72 +228,7 @@ export default function Dashboard() {
                 </Link>
               </div>
             </Card.Title>
-            <div>
-              <div className="movie-list">
-                {moviesList.map((moviesList) => (
-                  <Card
-                    key={moviesList.id}
-                    className="user-movie p-4"
-                    style={{ display: "flex", marginBottom: "16px" }}
-                  >
-                    <div style={{ display: "flex", width: "100%" }}>
-                      <div
-                        style={{
-                          background: "#15151575",
-                          minWidth: "200px",
-                          minHeight: "200px",
-                          width: "auto",
-                          height: "auto",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          marginRight: "16px",
-                          marginBottom: "16px",
-                        }}
-                      >
-                        <img
-                          style={{
-                            height: "100%",
-                            maxHeight: "200px",
-                            maxWidth: "200px",
-                          }}
-                          id="image"
-                          src={`https://homemoviefestival.herokuapp.com/files/${moviesList.image}`}
-                          alt="product"
-                        />
-                      </div>
-                      <div className="info">
-                        <p className="title" id="title">
-                          <strong>{moviesList.title}</strong>
-                        </p>
-                        <p>{moviesList.description}</p>
-
-                        <p
-                          style={{ cursor: "pointer" }}
-                          onClick={() => {
-                            navigator.clipboard.writeText(moviesList.magnet);
-                          }}
-                          className="text-muted"
-                        >
-                          {moviesList.magnet}
-                        </p>
-
-                        <p>
-                          releaseDate: {moviesList.releaseDate.substring(0, 10)}
-                        </p>
-                      </div>
-                    </div>
-                    <div>
-                      <MdDeleteOutline
-                        id="delete-icon"
-                        size={40}
-                        onClick={() => handleMovieDelete(moviesList.id)}
-                      />
-                    </div>
-                  </Card>
-                ))}
-              </div>
-            </div>
+            <MoviesList movies={moviesList} loading={false} userPage={true} />
             <div className="w-100 text-center mt-2">
               <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>

@@ -22,7 +22,10 @@ function App() {
   return (
     <AuthProvider>
       <Router>
-        <div className="d-flex align-items-center flex-column justify-content-between h-100">
+        <div
+          className="d-flex align-items-center flex-column justify-content-between"
+          style={{ minHeight: "100vh", height: "max-content" }}
+        >
           <Nav />
           <Container
             className="d-flex align-items-center justify-content-center"

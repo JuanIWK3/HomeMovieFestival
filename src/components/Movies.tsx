@@ -64,7 +64,7 @@ export default function Movies() {
   };
 
   return (
-    <div className="d-flex flex-column align-items-center justify-content-center">
+    <div className="d-flex flex-column align-items-center justify-content-between">
       {!loading && (
         <FormControl
           placeholder="Search movies"
@@ -80,7 +80,7 @@ export default function Movies() {
           }}
         />
       )}
-      <MoviesList movies={currentMovies} loading={loading} />
+      <MoviesList movies={currentMovies} loading={loading} userPage={false} />
       {!loading && (
         <>
           <Pagination
