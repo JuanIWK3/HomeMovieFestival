@@ -88,34 +88,6 @@ export default function Movies() {
             totalMovies={movies.length}
             paginate={paginate}
           />
-          <Dropdown style={{ marginBottom: "16px" }}>
-            <Dropdown.Toggle variant="success" id="dropdown-basic">
-              Items per page
-            </Dropdown.Toggle>
-            <Dropdown.Menu>
-              <Dropdown.Item
-                onClick={() => {
-                  setMoviesPerPage(5), window.scrollTo(0, 0);
-                }}
-              >
-                5
-              </Dropdown.Item>
-              <Dropdown.Item
-                onClick={() => {
-                  setMoviesPerPage(10), window.scrollTo(0, 0);
-                }}
-              >
-                10
-              </Dropdown.Item>
-              <Dropdown.Item
-                onClick={() => {
-                  setMoviesPerPage(15), window.scrollTo(0, 0);
-                }}
-              >
-                15
-              </Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
         </>
       )}
     </div>
