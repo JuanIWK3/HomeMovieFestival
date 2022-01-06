@@ -245,6 +245,7 @@ export const UpdateProfile = () => {
               className="bottom"
               variant="danger"
               type="submit"
+              disabled={true}
               style={style.button}
               onClick={handleDeleteAccount}
             >
