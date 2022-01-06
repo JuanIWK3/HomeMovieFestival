@@ -163,7 +163,7 @@ export default function Dashboard() {
                             maxWidth: "200px",
                           }}
                           id="image"
-                          src={`http://localhost:4000/files/${moviesList.image}`}
+                          src={`https://homemoviefestival.herokuapp.com/files/${moviesList.image}`}
                           alt="product"
                         />
                       </div>

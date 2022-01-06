@@ -56,7 +56,7 @@ export const MoviesList = ({ movies, loading }: IProps) => {
                 maxWidth: "200px",
               }}
               id="image"
-              src={`http://localhost:4000/files/${movies.image}`}
+              src={`https://homemoviefestival.herokuapp.com/files/${movies.image}`}
               alt="product"
             />
           </div>

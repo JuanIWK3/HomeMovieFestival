@@ -110,7 +110,7 @@ export const UpdateProfile = () => {
 
           localStorage.setItem(
             "avatar",
-            `http://localhost:4000/files/${res.data.avatar}`
+            `https://homemoviefestival.herokuapp.com/files/${res.data.avatar}`
           );
         });
       } catch (error) {
