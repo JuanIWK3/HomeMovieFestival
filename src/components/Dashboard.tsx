@@ -175,7 +175,6 @@ export default function Dashboard() {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  flexDirection: "column",
                   marginLeft: "16px",
                   marginRight: "16px",
                 }}
