@@ -182,6 +182,7 @@ export default function Dashboard() {
                     backgroundImage: `url(${avatar})`,
                     marginBottom: "8px",
                   }}
+                  onClick={handleShow}
                 >
                   <img id="preview-image" src={avatar} alt="" />
                 </div>
