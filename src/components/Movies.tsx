@@ -88,7 +88,7 @@ export default function Movies() {
             totalMovies={movies.length}
             paginate={paginate}
           />
-          <Dropdown>
+          <Dropdown style={{ marginBottom: "16px" }}>
             <Dropdown.Toggle variant="success" id="dropdown-basic">
               Items per page
             </Dropdown.Toggle>
