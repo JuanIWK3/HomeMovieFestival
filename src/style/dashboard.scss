@@ -55,11 +55,13 @@
 
     .user-image-name {
       margin-bottom: 16px;
-
-      @media only screen and(min-width: 768px) {
-        flex-direction: row;
-      }
     }
+  }
+}
+
+.user-image-name {
+  @media only screen and(min-width: 768px) {
+    flex-direction: row;
   }
 }
 
