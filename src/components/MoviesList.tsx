@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button, Card, Spinner } from "react-bootstrap";
 import { MdDeleteOutline } from "react-icons/md";
+import { api } from "../services/api";
 
 interface IProps {
   movies: {
@@ -18,6 +19,20 @@ interface IProps {
 export const MoviesList = ({ movies, loading, userPage }: IProps) => {
   const [copyMessage, setCopyMessage] = useState("Copy Magnet Link");
 
+  const config = {
+    headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+  };
+
+  const handleMovieDelete = async (movieId: string) => {
+    try {
+      await api.delete(`/movies/${movieId}`, config);
+      console.log("movie deleted");
+      window.location.reload();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   if (loading) {
     return (
       <>
@@ -34,9 +49,9 @@ export const MoviesList = ({ movies, loading, userPage }: IProps) => {
   }
   return (
     <div className="movie-list">
-      {movies.map((movies) => (
+      {movies.map((movie) => (
         <Card
-          key={movies.id}
+          key={movie.id}
           className="movie p-4"
           style={{
             display: "flex",
@@ -48,9 +63,9 @@ export const MoviesList = ({ movies, loading, userPage }: IProps) => {
             <div
               style={{
                 background: "#15151575",
-
                 width: "auto",
                 height: "auto",
+                minWidth: "150px",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -58,28 +73,29 @@ export const MoviesList = ({ movies, loading, userPage }: IProps) => {
               }}
               id="image"
             >
-              <img
+              <div
                 style={{
-                  maxHeight: "150px",
-                  maxWidth: "150px",
+                  height: "150px",
+                  width: "150px",
+                  backgroundImage: `url(https://homemoviefestival.herokuapp.com/files/${movie.image})`,
+                  backgroundPosition: "center",
+                  backgroundSize: "cover",
                 }}
                 id="image"
-                src={`https://homemoviefestival.herokuapp.com/files/${movies.image}`}
-                alt="product"
               />
             </div>
             <div className="info">
               <p className="title text-center" id="title">
-                <strong>{movies.title}</strong>
+                <strong>{movie.title}</strong>
               </p>
-              <p id="description">{movies.description}</p>
+              <p id="description">{movie.description}</p>
               <p>
                 Release Date:{" "}
-                {movies.releaseDate.substring(0, 10).replaceAll("-", "/")}
+                {movie.releaseDate.substring(0, 10).replaceAll("-", "/")}
               </p>
               <Button
                 onClick={() => {
-                  navigator.clipboard.writeText(movies.magnet);
+                  navigator.clipboard.writeText(movie.magnet);
                   setCopyMessage("Copied!");
                   setTimeout(() => {
                     setCopyMessage("Copy Magnet Link");
@@ -91,7 +107,14 @@ export const MoviesList = ({ movies, loading, userPage }: IProps) => {
               </Button>
             </div>
           </div>
-          <MdDeleteOutline id="delete-icon" />
+          {userPage && (
+            <MdDeleteOutline
+              onClick={() => {
+                handleMovieDelete(movie.id);
+              }}
+              id="delete-icon"
+            />
+          )}
         </Card>
       ))}
     </div>

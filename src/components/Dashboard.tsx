@@ -49,16 +49,6 @@ export default function Dashboard() {
     setAvatar(localStorage.getItem("avatar"));
   }, [localStorage.getItem("avatar")]);
 
-  const handleMovieDelete = async (movieId: string) => {
-    try {
-      await api.delete(`/movies/${movieId}`, config);
-      console.log("movie deleted");
-      window.location.reload();
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   const handleLogOut = async () => {
     setError("");
 
