@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Card, Spinner } from "react-bootstrap";
 
 interface IProps {
@@ -14,6 +14,8 @@ interface IProps {
 }
 
 export const MoviesList = ({ movies, loading }: IProps) => {
+  const [copyMessage, setCopyMessage] = useState("Copy Magnet Link");
+
   if (loading) {
     return (
       <>
@@ -66,15 +68,17 @@ export const MoviesList = ({ movies, loading }: IProps) => {
             </p>
             <p>{movies.description}</p>
             <p>releaseDate: {movies.releaseDate.substring(0, 10)}</p>
-            <Button>
-              <p
-                onClick={() => {
-                  navigator.clipboard.writeText(movies.magnet);
-                }}
-                className="mb-0"
-              >
-                Copy Magnet Link
-              </p>
+            <Button
+              onClick={() => {
+                navigator.clipboard.writeText(movies.magnet);
+                setCopyMessage("Copied!");
+                setTimeout(() => {
+                  setCopyMessage("Copy Magnet Link");
+                }, 2000);
+              }}
+              style={{ marginBottom: "0px", width: "170px" }}
+            >
+              {copyMessage}
             </Button>
           </div>
         </Card>
