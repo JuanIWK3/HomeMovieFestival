@@ -45,6 +45,10 @@ export default function Dashboard() {
     getMovies();
   }, []);
 
+  useEffect(() => {
+    setAvatar(localStorage.getItem("avatar"));
+  }, [localStorage.getItem("avatar")]);
+
   const handleMovieDelete = async (movieId: string) => {
     try {
       await api.delete(`/movies/${movieId}`, config);
