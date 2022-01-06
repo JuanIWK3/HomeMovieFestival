@@ -21,7 +21,7 @@ export default function Movies() {
   const [currentPage, setCurrentPage] = useState(
     parseInt(window.location.pathname.replace("/", ""))
   );
-  const [moviesPerPage, setMoviesPerPage] = useState(5);
+  const [moviesPerPage, setMoviesPerPage] = useState(6);
 
   useEffect(() => {
     const getMovies = async () => {
@@ -64,7 +64,10 @@ export default function Movies() {
   };
 
   return (
-    <div className="d-flex flex-column align-items-center justify-content-between">
+    <div
+      className="d-flex flex-column align-items-center justify-content-between"
+      style={{ minHeight: "80vh" }}
+    >
       {!loading && (
         <FormControl
           placeholder="Search movies"
@@ -82,13 +85,11 @@ export default function Movies() {
       )}
       <MoviesList movies={currentMovies} loading={loading} userPage={false} />
       {!loading && (
-        <>
-          <Pagination
-            moviesPerPage={moviesPerPage}
-            totalMovies={movies.length}
-            paginate={paginate}
-          />
-        </>
+        <Pagination
+          moviesPerPage={moviesPerPage}
+          totalMovies={movies.length}
+          paginate={paginate}
+        />
       )}
     </div>
   );
