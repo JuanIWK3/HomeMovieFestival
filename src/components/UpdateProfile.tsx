@@ -38,8 +38,8 @@ export const UpdateProfile = () => {
   const [file, setFile] = useState<File>(null);
   const [previewURL, setPreviewURL] = useState("");
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
   const [uploadFormError, setUploadFormError] = useState<string>("");
+  const [error, setError] = useState("");
 
   //* =========== useRef ===========
 
