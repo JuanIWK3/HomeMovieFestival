@@ -33,6 +33,7 @@
 
     align-items: center;
     word-break: break-all;
+
     @media only screen and (max-width: 600px) {
       flex-direction: column;
       #image {
@@ -50,6 +51,7 @@
 
 #image {
   min-height: 150px;
+  margin-right: 16px;
 
   @media only screen and (max-width: 400px) {
     width: 40vw;

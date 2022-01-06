@@ -69,7 +69,6 @@ export const MoviesList = ({ movies, loading, userPage }: IProps) => {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                marginRight: "16px",
               }}
               id="image"
             >
@@ -81,7 +80,6 @@ export const MoviesList = ({ movies, loading, userPage }: IProps) => {
                   backgroundPosition: "center",
                   backgroundSize: "cover",
                 }}
-                id="image"
               />
             </div>
             <div className="info">
