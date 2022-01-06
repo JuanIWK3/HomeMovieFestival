@@ -71,7 +71,6 @@ export default function Movies() {
           style={{
             backgroundColor: "#333",
             color: "#fff",
-            position: "fixed",
             top: "70px",
             width: "80vw",
           }}
