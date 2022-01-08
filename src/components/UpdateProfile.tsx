@@ -24,6 +24,7 @@ import FileService from "../services/fileService";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import { api } from "../services/api";
+import { baseURL } from "./../services/api";
 
 export const UpdateProfile = () => {
   //* =========== User===========
@@ -108,10 +109,7 @@ export const UpdateProfile = () => {
         api.get(`/users/${currentUser.id}`, config).then((res) => {
           console.log(res);
 
-          localStorage.setItem(
-            "avatar",
-            `https://homemoviefestival.herokuapp.com/files/${res.data.avatar}`
-          );
+          localStorage.setItem("avatar", `${baseURL}/files/${res.data.avatar}`);
         });
       } catch (error) {
         console.log(error);
@@ -238,14 +236,13 @@ export const UpdateProfile = () => {
                 <p>{error}</p>
               </Alert>
             )}
-            <Button disabled={loading} style={style.button} type="submit">
+            <Button disabled={true} style={style.button} type="submit">
               Save Changes
             </Button>
             <Button
               className="bottom"
               variant="danger"
               type="submit"
-              disabled={true}
               style={style.button}
               onClick={handleDeleteAccount}
             >

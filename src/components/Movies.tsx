@@ -1,5 +1,5 @@
 import React, { SyntheticEvent, useEffect, useState } from "react";
-import { Dropdown, FormControl } from "react-bootstrap";
+import { FormControl } from "react-bootstrap";
 import { api } from "../services/api";
 import "../style/movies.scss";
 import { MoviesList } from "./MoviesList";

@@ -10,8 +10,6 @@ interface Props {
 export const PrivateRoute: React.FC<Props> = ({ element: RouteElement }) => {
   const isLogged = localStorage.getItem("auth");
 
-  console.log(isLogged);
-
   if (isLogged == "true") {
     return <RouteElement />;
   } else {

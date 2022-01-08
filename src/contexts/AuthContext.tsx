@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { api } from "../services/api";
+import { baseURL } from "./../services/api";
 
 const AuthContext = React.createContext({});
 
@@ -42,7 +43,7 @@ export const AuthProvider: React.FC = ({ children }) => {
         localStorage.setItem("user", JSON.stringify(res.data.user));
         localStorage.setItem(
           "avatar",
-          `https://homemoviefestival.herokuapp.com/files/${res.data.user.avatar}`
+          `${baseURL}/files/${res.data.user.avatar}`
         );
         setToken(localStorage.getItem("token"));
         setIsLogged(true);

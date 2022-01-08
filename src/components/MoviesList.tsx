@@ -17,7 +17,9 @@ interface IProps {
 }
 
 export const MoviesList = ({ movies, loading, userPage }: IProps) => {
-  const [copyMessage, setCopyMessage] = useState("Copy Magnet Link");
+  const [copyMessage, setCopyMessage] = useState("Copy Magnet");
+
+  // const copyClicked = () => {};
 
   const config = {
     headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
@@ -31,6 +33,15 @@ export const MoviesList = ({ movies, loading, userPage }: IProps) => {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const changeButton = (e) => {
+    const { id } = e.currentTarget;
+    const button = document.getElementById(id);
+    button.innerText = "Copied!";
+    setTimeout(() => {
+      button.innerText = "Copy Magnet";
+    }, 1000);
   };
 
   if (loading) {
@@ -76,7 +87,7 @@ export const MoviesList = ({ movies, loading, userPage }: IProps) => {
                 style={{
                   height: "150px",
                   width: "150px",
-                  backgroundImage: `url(https://homemoviefestival.herokuapp.com/files/${movie.image})`,
+                  backgroundImage: `url(https://homemoviefestivalbucket.s3.us-east-2.amazonaws.com/${movie.image})`,
                   backgroundPosition: "center",
                   backgroundSize: "cover",
                 }}
@@ -92,12 +103,9 @@ export const MoviesList = ({ movies, loading, userPage }: IProps) => {
                 {movie.releaseDate.substring(0, 10).replaceAll("-", "/")}
               </p>
               <Button
-                onClick={() => {
-                  navigator.clipboard.writeText(movie.magnet);
-                  setCopyMessage("Copied!");
-                  setTimeout(() => {
-                    setCopyMessage("Copy Magnet Link");
-                  }, 2000);
+                id={movie.id}
+                onClick={(e) => {
+                  changeButton(e);
                 }}
                 style={{ marginBottom: "0px", width: "170px" }}
               >

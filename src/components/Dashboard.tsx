@@ -118,7 +118,7 @@ export default function Dashboard() {
         api.get(`/users/${currentUser.id}`, config).then((res) => {
           localStorage.setItem(
             "avatar",
-            `https://homemoviefestival.herokuapp.com/files/${res.data.avatar}`
+            `https://homemoviefestivalbucket.s3.us-east-2.amazonaws.com/${res.data.avatar}`
           );
         });
       } catch (error) {
