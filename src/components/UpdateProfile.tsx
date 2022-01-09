@@ -60,8 +60,6 @@ export const UpdateProfile = () => {
 
   //* =========== Functions ===========
 
-  const { handleLogOut } = useAuth();
-
   const handleDeleteAccount = async () => {
     try {
       await api.delete(`/users/${userId}`, config);
@@ -70,6 +68,17 @@ export const UpdateProfile = () => {
       handleLogOut();
     } catch (error) {
       console.log(error);
+    }
+  };
+
+  const handleLogOut = async () => {
+    setError("");
+
+    try {
+      navigate("/");
+      await logout();
+    } catch (error) {
+      setError("Failed to log out");
     }
   };
 

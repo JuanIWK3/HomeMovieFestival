@@ -141,7 +141,7 @@ export default function Newmovie() {
                   type="text"
                   name="description"
                   value={description}
-                  minLength={160}
+                  minLength={120}
                   required
                   placeholder="Description"
                   onChange={(e) => setDescription(e.target.value)}

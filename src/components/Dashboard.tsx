@@ -1,5 +1,14 @@
 import React, { SyntheticEvent, useEffect, useState } from "react";
-import { Alert, Button, Card, Modal, Spinner } from "react-bootstrap";
+import {
+  Alert,
+  Button,
+  Card,
+  Dropdown,
+  Form,
+  FormControl,
+  Modal,
+  Spinner,
+} from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import { api } from "../services/api";
@@ -11,6 +20,8 @@ import {
 } from "../services/fileValidatorService";
 import FileService from "../services/fileService";
 import { MoviesList } from "./MoviesList";
+import { RiSettings4Fill } from "react-icons/ri";
+import { MdOutlineLogout } from "react-icons/md";
 
 interface ILista {
   id: string;
@@ -22,7 +33,9 @@ interface ILista {
 }
 
 export default function Dashboard() {
+  const [confirmed, setConfirmed] = useState(false);
   const [show, setShow] = useState(false);
+  const [showDelete, setShowDelete] = useState(false);
   const [file, setFile] = useState<File>(null);
   const [previewURL, setPreviewURL] = useState("");
   const [loading, setLoading] = useState(false);
@@ -66,6 +79,10 @@ export default function Dashboard() {
     setPreviewURL("");
   };
 
+  const handleCloseDelete = () => {
+    setShowDelete(false);
+  };
+
   const handleShow = () => (setShow(true), setError(""));
 
   const handleFileUpload = async (element: HTMLInputElement) => {
@@ -99,6 +116,25 @@ export default function Dashboard() {
     setFile(file[0]);
     const fileURL = URL.createObjectURL(file[0]);
     setPreviewURL(fileURL);
+  };
+
+  const handleDeleteAccount = async () => {
+    try {
+      await api.delete(`/users/${userId}`, config);
+      console.log("account deleted");
+      navigate("/");
+      handleLogOut();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const confirmDeleteText = (e) => {
+    if (e.value == currentUser.name) {
+      setConfirmed(true);
+    } else {
+      setConfirmed(false);
+    }
   };
 
   const handleUpdatePic = async () => {
@@ -185,16 +221,51 @@ export default function Dashboard() {
                   flexDirection: "column",
                 }}
               >
-                <Link to="/update-profile" id="update">
-                  <Button variant="secondary" style={{ margin: "4px" }}>
-                    Update Profile
-                  </Button>
-                </Link>
+                <Dropdown>
+                  <Dropdown.Toggle
+                    style={{ width: "120px" }}
+                    variant="secondary"
+                    id="dropdown-basic"
+                  >
+                    <RiSettings4Fill
+                      style={{ marginRight: "8px", marginBottom: "2px" }}
+                    />
+                    Settings
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu>
+                    <Dropdown.Item
+                      onClick={() => {
+                        navigate("/update-profile");
+                      }}
+                    >
+                      Edit Profile
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      onClick={() => {
+                        setShowDelete(true);
+                      }}
+                    >
+                      <p
+                        style={{ marginBottom: "0px" }}
+                        className="text-danger"
+                      >
+                        Delete Account
+                      </p>
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+
                 <Button
                   variant="secondary"
-                  style={{ margin: "4px" }}
+                  style={{
+                    margin: "4px",
+                    width: "120px",
+                  }}
                   onClick={handleLogOut}
                 >
+                  <MdOutlineLogout
+                    style={{ marginRight: "8px", marginBottom: "4px" }}
+                  />
                   Log Out
                 </Button>
               </div>
@@ -287,6 +358,51 @@ export default function Dashboard() {
                     variant="primary"
                   >
                     Save
+                  </Button>
+                </Modal.Footer>
+              </Modal>
+              <Modal show={showDelete} onHide={handleCloseDelete}>
+                <Modal.Header closeButton>
+                  <Modal.Title>Delete your account</Modal.Title>
+                </Modal.Header>
+                <Modal.Body
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <p>
+                    Please type <strong>{currentUser.name}</strong> to confirm
+                  </p>
+                  <FormControl
+                    style={{
+                      backgroundColor: "#333",
+                      color: "#fff",
+                      top: "70px",
+                      width: "100%",
+                    }}
+                    type="text"
+                    onChange={(e: SyntheticEvent) => {
+                      confirmDeleteText(e.currentTarget as HTMLInputElement);
+                    }}
+                  />
+                </Modal.Body>
+                <Modal.Footer>
+                  {error && (
+                    <Alert className="h-25" variant="danger">
+                      {error}
+                    </Alert>
+                  )}
+
+                  <Button
+                    onClick={handleDeleteAccount}
+                    disabled={!confirmed}
+                    type="submit"
+                    variant="danger"
+                  >
+                    Delete
                   </Button>
                 </Modal.Footer>
               </Modal>

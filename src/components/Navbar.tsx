@@ -17,6 +17,9 @@ export default function Nav() {
       <div>
         {isLogged ? (
           <>
+            <Link className="navbarItems" to="/newmovie">
+              New Movie
+            </Link>
             <Link className="navbarItems" to="/dashboard">
               User
             </Link>
