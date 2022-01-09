@@ -43,7 +43,7 @@ export const AuthProvider: React.FC = ({ children }) => {
         localStorage.setItem("user", JSON.stringify(res.data.user));
         localStorage.setItem(
           "avatar",
-          `https://homemoviefestivalbucket.s3.us-east-2.amazonaws.com/files/${res.data.user.avatar}`
+          `https://homemoviefestivalbucket.s3.us-east-2.amazonaws.com/${res.data.user.avatar}`
         );
         setToken(localStorage.getItem("token"));
         setIsLogged(true);

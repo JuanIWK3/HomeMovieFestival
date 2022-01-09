@@ -111,7 +111,7 @@ export const UpdateProfile = () => {
 
           localStorage.setItem(
             "avatar",
-            `https://homemoviefestivalbucket.s3.us-east-2.amazonaws.com/files/${res.data.avatar}`
+            `https://homemoviefestivalbucket.s3.us-east-2.amazonaws.com/${res.data.avatar}`
           );
         });
       } catch (error) {
