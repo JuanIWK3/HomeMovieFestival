@@ -109,7 +109,10 @@ export const UpdateProfile = () => {
         api.get(`/users/${currentUser.id}`, config).then((res) => {
           console.log(res);
 
-          localStorage.setItem("avatar", `${baseURL}/files/${res.data.avatar}`);
+          localStorage.setItem(
+            "avatar",
+            `https://homemoviefestivalbucket.s3.us-east-2.amazonaws.com/files/${res.data.avatar}`
+          );
         });
       } catch (error) {
         console.log(error);
