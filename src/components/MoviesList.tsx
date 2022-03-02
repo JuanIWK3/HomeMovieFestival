@@ -89,6 +89,7 @@ export const MoviesList = ({ movies, loading, userPage }: IProps) => {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
+                borderRadius: "0.3rem",
               }}
               id="image"
             >
@@ -99,6 +100,7 @@ export const MoviesList = ({ movies, loading, userPage }: IProps) => {
                   backgroundImage: `url(https://homemoviefestivalbucket.s3.us-east-2.amazonaws.com/${movie.image})`,
                   backgroundPosition: "center",
                   backgroundSize: "cover",
+                  borderRadius: "0.3rem",
                 }}
               />
             </div>
@@ -116,6 +118,7 @@ export const MoviesList = ({ movies, loading, userPage }: IProps) => {
                 onClick={(e) => {
                   changeButton(e, movie.magnet);
                 }}
+                variant="dark"
                 style={{ marginBottom: "0px", width: "170px" }}
               >
                 {copyMessage}

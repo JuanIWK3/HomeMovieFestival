@@ -9,27 +9,26 @@ export default function Nav() {
 
   return (
     <nav className="navbar">
-      <div>
-        <Link className="navbarItems" to="/">
-          Home
-        </Link>
-      </div>
-      <div>
+      <Link className="navbarItem" to="/">
+        Home
+      </Link>
+
+      <div className="navbarItems">
         {isLogged ? (
           <>
-            <Link className="navbarItems" to="/newmovie">
+            <Link className="navbarItem" to="/newmovie">
               New Movie
             </Link>
-            <Link className="navbarItems" to="/dashboard">
+            <Link className="navbarItem" to="/dashboard">
               User
             </Link>
           </>
         ) : (
           <>
-            <Link className="navbarItems" to="/login">
+            <Link className="navbarItem" to="/login">
               Log In
             </Link>
-            <Link className="navbarItems" to="/signup">
+            <Link className="navbarItem" to="/signup">
               Sign Up
             </Link>
           </>

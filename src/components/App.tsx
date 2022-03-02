@@ -27,12 +27,7 @@ function App() {
           style={{ minHeight: "100vh", height: "max-content" }}
         >
           <Nav />
-          <Container
-            className="d-flex align-items-center justify-content-center"
-            style={{
-              marginTop: "50px",
-            }}
-          >
+          <Container className="d-flex align-items-center justify-content-center">
             <div className="w-100 d-flex align-items-center justify-content-center">
               <Routes>
                 <Route path="/" element={<Movies />} />

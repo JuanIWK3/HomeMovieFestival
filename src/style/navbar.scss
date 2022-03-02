@@ -1,16 +1,42 @@
 .navbar {
   width: 100%;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0px 1px 1px #c1c1c1;
+
   padding: 16px 32px 16px 32px;
+
   text-decoration: none;
+  font-family: 'Courier New', Courier, monospace;
+
   z-index: 2;
   background-color: #111;
+
+  @media only screen and (max-width: 340px) {
+    justify-content: center;
+  }
+
   .navbarItems {
+    display: flex;
+    flex-direction: row;
+    @media only screen and (max-width: 340px) {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  .navbarItem {
     margin: 0 8px 0 8px;
     text-decoration: none;
+    padding: 8px;
+    transition: all 0.2s linear;
+
+    &:hover {
+      background-color: rgb(26, 26, 26);
+      border-radius: 0.3rem;
+    }
   }
 }
 
@@ -18,9 +44,4 @@
   border-radius: 0.4rem;
   margin: 4px;
   padding: 8px;
-}
-
-.bottom {
-  position: relative;
-  bottom: 0;
 }

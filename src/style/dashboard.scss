@@ -81,3 +81,16 @@
     }
   }
 }
+
+.dashboard-container {
+  transform: translateX(2000px) scale(0.2);
+  animation: slideInRight 0.3s ease forwards;
+}
+@keyframes slideInRight {
+  0% {
+    transform: translateX(2000px) scale(0.2);
+  }
+  100% {
+    transform: translateX(0px) scale(1);
+  }
+}

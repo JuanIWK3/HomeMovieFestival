@@ -9,6 +9,8 @@ import {
   validateFileType,
 } from "../services/fileValidatorService";
 
+import "../style/newmovie.scss";
+
 export default function Newmovie() {
   //* =========== Context ===========
 
@@ -104,7 +106,7 @@ export default function Newmovie() {
 
   return (
     <div
-      className="center"
+      className="newmovie-container center"
       style={{ maxWidth: "400px", width: "100vw", minWidth: "250px" }}
     >
       <div className="newmovie-page">

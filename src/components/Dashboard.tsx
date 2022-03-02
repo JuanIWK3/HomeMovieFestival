@@ -179,8 +179,8 @@ export default function Dashboard() {
 
   return (
     <>
-      <div style={{ width: "100%" }}>
-        <div>
+      <div style={{ width: "100%", maxWidth: "900px", overflow: "hidden" }}>
+        <div className="dashboard-container">
           <Card.Body>
             <div
               className="user-tab"
@@ -273,7 +273,10 @@ export default function Dashboard() {
           </Card.Body>
         </div>
 
-        <div style={{ backgroundColor: "#181818" }}>
+        <div
+          className="dashboard-container"
+          style={{ backgroundColor: "#181818" }}
+        >
           <Card.Body>
             <Card.Title>
               <div
@@ -285,7 +288,12 @@ export default function Dashboard() {
               >
                 <h4>Movies</h4>
                 <Link style={{ textDecoration: "none" }} to="/newmovie">
-                  Add a new movie
+                  <Button
+                    style={{ border: "none", backgroundColor: "#222" }}
+                    variant="dark"
+                  >
+                    Add a new movie
+                  </Button>
                 </Link>
               </div>
             </Card.Title>

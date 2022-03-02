@@ -1,0 +1,13 @@
+.newmovie-container {
+  transform: translateX(-2000px) scale(0.2);
+  animation: slideInLeft 0.2s ease forwards;
+}
+
+@keyframes slideInLeft {
+  0% {
+    transform: translateX(-2000px) scale(0.2);
+  }
+  100% {
+    transform: translateX(0px) scale(1);
+  }
+}
