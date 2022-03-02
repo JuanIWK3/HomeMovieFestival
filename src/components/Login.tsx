@@ -34,7 +34,7 @@ export default function Login() {
           minWidth: "300px",
         }}
       >
-        <Card>
+        <div>
           <Card.Body>
             <h2 className="w-100 text-center mt-2">Log In</h2>
             {error && (
@@ -57,7 +57,7 @@ export default function Login() {
               </Button>
             </Form>
           </Card.Body>
-        </Card>
+        </div>
         <div className="w-100 text-center mt-2">
           Need an account? <Link to="/signup">Sign Up</Link>
         </div>

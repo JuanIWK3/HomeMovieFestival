@@ -72,10 +72,11 @@ export default function Movies() {
         <FormControl
           placeholder="Search movies"
           style={{
-            backgroundColor: "#333",
+            backgroundColor: "#222",
             color: "#fff",
             top: "70px",
             width: "80vw",
+            border: "none",
           }}
           type="text"
           onChange={(e: SyntheticEvent) => {

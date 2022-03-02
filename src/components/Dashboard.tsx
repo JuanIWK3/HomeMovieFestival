@@ -180,7 +180,7 @@ export default function Dashboard() {
   return (
     <>
       <div style={{ width: "100%" }}>
-        <Card>
+        <div>
           <Card.Body>
             <div
               className="user-tab"
@@ -271,9 +271,9 @@ export default function Dashboard() {
               </div>
             </div>
           </Card.Body>
-        </Card>
+        </div>
 
-        <Card style={{ backgroundColor: "#181818" }}>
+        <div style={{ backgroundColor: "#181818" }}>
           <Card.Body>
             <Card.Title>
               <div
@@ -408,7 +408,7 @@ export default function Dashboard() {
               </Modal>
             </div>
           </Card.Body>
-        </Card>
+        </div>
       </div>
     </>
   );

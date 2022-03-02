@@ -206,7 +206,7 @@ export const UpdateProfile = () => {
         minWidth: "250px",
       }}
     >
-      <Card>
+      <div>
         <Card.Body>
           <div className="d-flex justify-content-center">
             <div
@@ -333,7 +333,7 @@ export const UpdateProfile = () => {
             </Modal>
           </div>
         </Card.Body>
-      </Card>
+      </div>
     </div>
   );
 };

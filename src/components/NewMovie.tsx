@@ -109,7 +109,7 @@ export default function Newmovie() {
     >
       <div className="newmovie-page">
         <div className="content">
-          <Card>
+          <div>
             <Card.Body>
               <Card.Title className="d-flex justify-content-center">
                 Add a New Movie
@@ -141,7 +141,6 @@ export default function Newmovie() {
                   type="text"
                   name="description"
                   value={description}
-                  minLength={120}
                   required
                   placeholder="Description"
                   onChange={(e) => setDescription(e.target.value)}
@@ -152,7 +151,6 @@ export default function Newmovie() {
                   name="release"
                   value={releaseDate}
                   required
-                  defaultValue={date}
                   placeholder="Release Date"
                   onChange={(e) => setReleaseDate(e.target.value)}
                 />
@@ -193,7 +191,7 @@ export default function Newmovie() {
                 </div>
               </form>
             </Card.Body>
-          </Card>
+          </div>
         </div>
       </div>
     </div>

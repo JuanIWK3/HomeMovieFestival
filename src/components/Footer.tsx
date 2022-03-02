@@ -5,7 +5,7 @@ import { Card, Container } from "react-bootstrap";
 export const Footer = () => {
   return (
     <footer>
-      <Card style={{ width: "100%", padding: "16px" }}>
+      <Card style={{ background: "#111", width: "100%", padding: "16px" }}>
         <div className="d-flex justify-content-around">
           <div>
             <h5 className="text-uppercase">Juan Israel</h5>

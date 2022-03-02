@@ -35,13 +35,14 @@ export const MoviesList = ({ movies, loading, userPage }: IProps) => {
     }
   };
 
-  const changeButton = (e) => {
+  const changeButton = (e: any, magnet: string) => {
     const { id } = e.currentTarget;
     const button = document.getElementById(id);
     button.innerText = "Copied!";
     setTimeout(() => {
       button.innerText = "Copy Magnet";
     }, 1000);
+    navigator.clipboard.writeText(magnet);
   };
 
   if (loading) {
@@ -55,6 +56,14 @@ export const MoviesList = ({ movies, loading, userPage }: IProps) => {
             bottom: "50%",
           }}
         />
+        <p
+          style={{
+            position: "fixed",
+            bottom: "45%",
+          }}
+        >
+          Waiting for API
+        </p>
       </>
     );
   }
@@ -105,7 +114,7 @@ export const MoviesList = ({ movies, loading, userPage }: IProps) => {
               <Button
                 id={movie.id}
                 onClick={(e) => {
-                  changeButton(e);
+                  changeButton(e, movie.magnet);
                 }}
                 style={{ marginBottom: "0px", width: "170px" }}
               >
