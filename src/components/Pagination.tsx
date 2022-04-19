@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 interface IPropsPag {
   moviesPerPage: number;
@@ -22,16 +23,16 @@ export const Pagination = ({
       <ul className="pagination">
         {pageNumbers.map((number) => (
           <li key={number} className="page-item">
-            <a
+            <Link
               style={{ fontSize: "12px" }}
               onClick={() => {
                 paginate(number);
               }}
-              href={`${number}`}
+              to={`${number}`}
               className="page-link"
             >
               {number}
-            </a>
+            </Link>
           </li>
         ))}
       </ul>
