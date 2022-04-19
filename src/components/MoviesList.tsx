@@ -17,7 +17,7 @@ interface IProps {
 }
 
 export const MoviesList = ({ movies, loading, userPage }: IProps) => {
-  const [copyMessage, setCopyMessage] = useState("Copy Magnet");
+  const [copyMessage, setCopyMessage] = useState("Magnet");
 
   // const copyClicked = () => {};
 
@@ -79,7 +79,10 @@ export const MoviesList = ({ movies, loading, userPage }: IProps) => {
             justifyContent: "space-between",
           }}
         >
-          <div className="movie" style={{ display: "flex" }}>
+          <div className="movie">
+            <p className="title text-center" id="title">
+              <strong>{movie.title}</strong>
+            </p>
             <div
               style={{
                 background: "#15151575",
@@ -90,6 +93,7 @@ export const MoviesList = ({ movies, loading, userPage }: IProps) => {
                 alignItems: "center",
                 justifyContent: "center",
                 borderRadius: "0.3rem",
+                marginBottom: "16px",
               }}
               id="image"
             >
@@ -105,24 +109,23 @@ export const MoviesList = ({ movies, loading, userPage }: IProps) => {
               />
             </div>
             <div className="info">
-              <p className="title text-center" id="title">
-                <strong>{movie.title}</strong>
-              </p>
               <p id="description">{movie.description}</p>
               <p>
                 Release Date:{" "}
                 {movie.releaseDate.substring(0, 10).replaceAll("-", "/")}
               </p>
-              <Button
-                id={movie.id}
-                onClick={(e) => {
-                  changeButton(e, movie.magnet);
-                }}
-                variant="dark"
-                style={{ marginBottom: "0px", width: "170px" }}
-              >
-                {copyMessage}
-              </Button>
+              <a href={`${movie.magnet}`} target="blank">
+                <Button
+                  id={movie.id}
+                  onClick={(e) => {
+                    changeButton(e, movie.magnet);
+                  }}
+                  variant="dark"
+                  style={{ marginBottom: "0px", width: "170px" }}
+                >
+                  {copyMessage}
+                </Button>
+              </a>
             </div>
           </div>
           {userPage && (

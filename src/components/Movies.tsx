@@ -71,6 +71,7 @@ export default function Movies() {
       {!loading && (
         <FormControl
           placeholder="Search movies"
+          className="search-movies"
           style={{
             backgroundColor: "#222",
             color: "#fff",

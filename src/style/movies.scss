@@ -1,3 +1,10 @@
+.search-movies {
+  max-width: 935px;
+  @media screen and (max-width: 1248px) {
+    width: 80vw;
+  }
+}
+
 .movie-list {
   display: flex;
   flex-direction: column;
@@ -14,26 +21,26 @@
   }
 
   .movie {
-    padding: 16px;
+    padding: 16px 36px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     width: 80vw;
     background-color: #222;
+    align-items: center;
+    word-break: break-all;
+    max-width: 935px;
 
     @media only screen and (min-width: 1248px) {
-      height: 350px;
       max-height: 500px;
       .info {
         #description {
+          padding: 8px;
           height: 110px;
           overflow: auto;
         }
       }
-      max-width: 600px;
+      max-width: 450px;
     }
-
-    align-items: center;
-    word-break: break-all;
 
     @media only screen and (max-width: 600px) {
       flex-direction: column;
@@ -80,6 +87,7 @@
 .title {
   align-self: center;
   font-size: 1.2rem;
+  text-wrap: break-word;
 }
 
 #delete-icon {
