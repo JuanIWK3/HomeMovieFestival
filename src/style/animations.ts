@@ -7,11 +7,12 @@ export const rotate = keyframes`
     transform: rotate(360deg);
   }
 `;
-export const rotateInv = keyframes`
+
+export const slideInRight = keyframes`
   from {
-    transform: rotate(360deg);
+    transform: translateX(2000px) scale(0.2);
   }
   to {
-    transform: rotate(0deg);
+    transform: translateX(0px) scale(1);
   }
 `;
