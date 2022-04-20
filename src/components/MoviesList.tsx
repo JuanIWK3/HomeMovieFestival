@@ -40,7 +40,7 @@ export const MoviesList = ({ movies, loading, userPage }: IProps) => {
     const button = document.getElementById(id);
     button.innerText = "Copied!";
     setTimeout(() => {
-      button.innerText = "Copy Magnet";
+      button.innerText = "Magnet";
     }, 1000);
     navigator.clipboard.writeText(magnet);
   };
