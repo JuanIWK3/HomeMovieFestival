@@ -63,25 +63,6 @@
   }
 }
 
-.user-movie {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 80vw;
-  @media only screen and (min-width: 1248px) {
-    max-width: 600px;
-  }
-
-  align-items: center;
-  word-break: break-all;
-  @media only screen and (max-width: 768px) {
-    flex-direction: column;
-    #div-movies {
-      flex-direction: column;
-    }
-  }
-}
-
 .dashboard-container {
   transform: translateX(2000px) scale(0.2);
   animation: slideInRight 0.3s ease forwards;

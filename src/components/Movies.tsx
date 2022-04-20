@@ -1,7 +1,6 @@
 import React, { SyntheticEvent, useEffect, useState } from "react";
 import { FormControl } from "react-bootstrap";
 import { api } from "../services/api";
-import "../style/movies.scss";
 import { MoviesList } from "./MoviesList";
 import { Pagination } from "./Pagination";
 

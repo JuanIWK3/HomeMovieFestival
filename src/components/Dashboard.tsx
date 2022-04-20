@@ -83,7 +83,9 @@ export default function Dashboard() {
     setShowDelete(false);
   };
 
-  const handleShow = () => (setShow(true), setError(""));
+  const handleShow = () => (
+    setShow(true), setError(""), setUploadFormError("")
+  );
 
   const handleFileUpload = async (element: HTMLInputElement) => {
     const file = element.files;
@@ -361,7 +363,7 @@ export default function Dashboard() {
                   </Button>
                   <Button
                     onClick={handleUpdatePic}
-                    disabled={!file}
+                    disabled={!file || uploadFormError !== ""}
                     type="submit"
                     variant="primary"
                   >
